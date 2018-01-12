@@ -127,12 +127,12 @@ class Flappy(object):
 			self.limit = False
 		
 
+		# True if the bird touches a bar
+		collision = (self.bird.collidelist(self.bars) != -1) 
+		
 		# If the bird goes off the screen, restart
 		if self.bird.bottom > y_res or self.bird.top < 0:
 			raise Exception()
-
-		# True if the bird touches a bar
-		collision = (self.bird.collidelist(self.bars) != -1) 
 
 		# If the bird hits a bar, restart
 		elif collision:
