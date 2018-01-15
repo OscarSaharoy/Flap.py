@@ -7,12 +7,12 @@ pygame.init()
 
 info = pygame.display.Info()
 
-x_res = info.current_h/2 # Width of display
-y_res = info.current_h/2 # Height of display
+x_res = info.current_h // 2  # Width of display
+y_res = info.current_h // 2  # Height of display
 
-SP    = info.current_h * 0.02 # measurement unit - about 30 pixels on 1440p monitor but scales to others
+SP    = info.current_h // 50 # measurement unit - about 30 pixels on 1440p monitor but scales to others
 
-frmrt = 16   # delay between frames in ms
+frmrt = 16 # delay between frames in ms
 
 # Palette
 white = (255, 255, 255)
@@ -26,7 +26,7 @@ class Flappy(object):
 		self.surface = pygame.display.set_mode((x_res,y_res)) # initialise window for drawing
 
 		# Set title and favicon
-		icon = pygame.image.load('flappy.png')
+		icon = pygame.image.load(r'assets/flappy.png')
 		pygame.display.set_icon(icon)
 
 		pygame.display.set_caption(' Flap.py')
@@ -51,7 +51,7 @@ class Flappy(object):
 		self.bird    = pygame.Rect(SP*3,SP*3,SP*2,SP*2)
 
 		# Initialising fonts
-		self.bigfont = pygame.freetype.SysFont('Verdana', x_res*0.5, bold=True)
+		self.bigfont = pygame.freetype.SysFont('Verdana', x_res//2, bold=True)
 		self.smlfont = pygame.freetype.SysFont('Verdana', SP, bold=True)
 
 		self.makebar()
@@ -75,7 +75,7 @@ class Flappy(object):
 		self.tick    += 1
 
 		# Increase bird's downward velocity to simulate gravity
-		self.birdvel += SP/60.0
+		self.birdvel += SP/60
 
 		# Set bird's velocity to simulate a jump if space is pressed
 		if pygame.key.get_pressed()[pygame.K_SPACE]:
@@ -129,7 +129,7 @@ class Flappy(object):
 
 		# True if the bird touches a bar
 		collision = (self.bird.collidelist(self.bars) != -1) 
-		
+
 		# If the bird goes off the screen, restart
 		if self.bird.bottom > y_res or self.bird.top < 0:
 			raise Exception()
