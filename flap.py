@@ -31,7 +31,6 @@ class Flappy(object):
 
 		pygame.display.set_caption(' Flap.py')
 
-
 		self.build()
 
 
