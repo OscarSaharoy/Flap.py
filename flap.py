@@ -1,6 +1,6 @@
 # Oscar Saharoy 2018
 
-import pygame, random, sys
+import pygame, random, sys, os
 from pygame import freetype
 
 pygame.init()
